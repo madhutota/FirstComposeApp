@@ -1,4 +1,5 @@
 <resources>
     <string name="app_name">FirstComposeApp</string>
     <string name="title_activity_modifier">ModifierActivity</string>
+    <string name="title_activity_quotes">QuotesActivity</string>
 </resources>
