@@ -4,4 +4,6 @@
     <string name="title_activity_quotes">QuotesActivity</string>
     <string name="title_activity_compose_side_effects">ComposeSideEffectsActivity</string>
     <string name="title_activity_remember_state">RememberStateActivity</string>
+    <string name="title_activity_splash">SplashActivity</string>
+    <string name="title_activity_disposable_effect">DisposableEffectActivity</string>
 </resources>
