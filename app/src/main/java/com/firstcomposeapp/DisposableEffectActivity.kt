@@ -19,7 +19,10 @@ import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.DisposableEffect
 import androidx.compose.runtime.ProduceStateScope
+import androidx.compose.runtime.derivedStateOf
+import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.produceState
+import androidx.compose.runtime.remember
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.rotate
@@ -38,7 +41,8 @@ class DisposableEffectActivity : ComponentActivity() {
             FirstComposeAppTheme {
                 // A surface container using the 'background' color from the theme
                 // mediaComposable()
-                producerStateApp()
+                //producerStateApp()
+                derivedStateApp()
             }
         }
     }
@@ -60,7 +64,6 @@ fun mediaComposable() {
 
 }
 
-@Preview
 @Composable
 fun producerStateApp() {
     loader()
@@ -95,6 +98,43 @@ fun loader() {
 
     })
 
+
+}
+
+//Derived State
+
+@Composable
+fun derivedStateApp() {
+    derived()
+}
+
+@Preview
+@Composable
+fun derived() {
+    var state = remember {
+        mutableStateOf(6)
+    }
+
+    var produceState = produceState(initialValue = 1) {
+        repeat(9) {
+            delay(1000)
+            value += 1
+        }
+    }
+    val derivedMessage = remember {
+        derivedStateOf {
+            " ${state.value} * ${produceState.value} = ${state.value * produceState.value} "
+        }
+    }
+
+    Box(modifier = Modifier.fillMaxSize(1f), contentAlignment = Alignment.Center) {
+
+        Text(
+            text = derivedMessage.value,
+            style = MaterialTheme.typography.displayLarge,
+            color = Color.Blue
+        )
+    }
 
 }
 
